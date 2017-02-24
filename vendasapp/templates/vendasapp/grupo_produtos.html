@@ -1,0 +1,75 @@
+{% extends "template_site.html" %}
+
+{% block title %}GV - Gestão de Vendas - v: 001 {% endblock %}
+
+{% block content %}
+<body onload="iniciar();">
+
+	<h1>
+	  <div id="cadastro">
+	  Manutenção de Grupo de Produtos
+	  </div>
+	</h1>
+
+	<hr>
+	<div id="divform">
+	  <form action="" method="POST" name="cadastrar">
+	    <table>
+	      <tr>
+	        <td width="100" class="td1">Descrição</td>
+	        <td><input type="text" name="descricao" class="form-control" style="margin: 0px 0px 10px; width: 400px;" maxlength="100"></td>
+	      </tr>
+	      <tr>
+	        <td class="td1">Ativo</td>
+	        <td>
+				<div class="form-group">
+				  <!--<label for="sel1">Selecione: </label>-->
+				  <select class="form-control" id="ativo" style="width: 100px;"">
+				    <option value="S" selected >Sim</option>
+				    <option value="N">Não</option>
+				  </select>
+				</div>	        
+	        </td>
+	      </tr>    
+
+	      <tr>
+	        <td class="td1">Txt Adicional</td>
+	        <td>
+	          <textarea class="form-control" rows="3"  name="texto" maxlength="500" style="margin: 0px 0px 10px; width: 629px; height: 61px;" class="form-control" maxlength="500"></textarea>
+	        </td>
+	      </tr>
+	      <tr>
+	        <td class="td1">Usu.Inclusão</td>
+	        <td><input type="text" name="url" style="margin: 0px 0px 10px; width: 300px;"  class="form-control" maxlength="100" disabled></td>
+	      </tr>    
+	      <tr>
+	        <td class="td1">Data Inclusão</td>
+	        <td><input type="text" name="url" style="margin: 0px 0px 10px; width: 200px;"  class="form-control" maxlength="100" disabled></td>
+	      </tr>    
+	      <tr>
+	        <td class="td1">Usu.Alteração</td>
+	        <td><input type="text" name="url" style="margin: 0px 0px 10px; width: 300px;"  class="form-control" maxlength="100" disabled></td>
+	      </tr>    
+	      <tr>
+	        <td class="td1">Data Alteração</td>
+	        <td><input type="text" name="url" style="margin: 0px 0px 10px; width: 200px;"  class="form-control" maxlength="100" disabled></td>
+	      </tr>    
+	    </table>
+
+	    <hr>
+	    
+	    <!-- <input type="submit" value="Salvar"> -->
+	    <a class="btn btn-success btn-outline" onclick="validar()">Salvar</a>
+	  </form>
+	</div>
+
+</body>
+<script type="text/javascript">
+
+  
+  function iniciar(){
+      document.cadastrar.descricao.focus();
+    }
+
+</script>
+{% endblock %}

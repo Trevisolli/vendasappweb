@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <link rel="stylesheet" type="text/css" href="../static/dist/css/bootstrap.min.css">     
+    <link rel="stylesheet" type="text/css" href="../static/dist/css/trevisolli.css" >
+    <link rel="stylesheet" type="text/css" href="../static/dist/css/paging.css" rel="stylesheet">
+    
+    <script src="static/dist/js/jquery-1.12.4.min.js"></script>
+    <script src="static/dist/js/vendasapp.js"></script>
+    
+    
+    <style>
+      .esquerda{
+         text-align: right;
+         width: 100%;
+      }
+
+      a:link, a:visited { 
+        text-decoration: none
+      }
+      
+      a:hover {
+        text-decoration: underline; 
+        color: #f00
+      }
+      
+      a:active {
+        text-decoration: none
+        }
+
+      padding-left: 15px;  
+
+
+    </style>
+
+    <script>
+      function sair(usuario){
+        window.location.href='/logout/';      
+      }
+
+    </script> 
+    <title>{% block title %}{% endblock %}</title>
+    
+    <nav class="navbar navbar-default" > <!-- navbar-fixed-top -->
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{% url 'vendas_inicial' %}"><strong>GV - Gestão de Vendas</strong></a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="{% url 'vendas_inicial' %}">Home</a></li>
+
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Manutenção<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <!-- Somente administrador cadastra usuario/login -->
+              <li><a href=" {% url 'grupo_produtos' %} ">Grupo de Produtos</a></li>
+              <li><a href="...">Produtos</a></li>
+              <li><a href="...">Estoques</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="...">Clientes e Fornecedores</a></li>
+            </ul>
+          
+          </li>
+
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Operação<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="...">Vendas</a></li>
+              <li><a href="...">Compras</a></li>
+              <li><a href="...">Cancelamentos</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong>Gerencial</strong><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="...">Dashboards</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Sobre</a></li>
+
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li id="divpesquisa" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" ><strong>Olá [  ] </strong> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#" onclick="sair();" style="cursor: pointer;"> Sair</a></li>
+              </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>    
+    {% endblock %}
+  </head>
+  <body>    
+  <script src="static/dist/js/bootstrap.min.js"></script>
+    <!-- Conteúdo do Template -->
+    <div id="content"  style="padding-left: 15px;">
+      {% block content %}
+      <p>Teste</p>
+      {% endblock %}
+    </div>
+    <!-- Rodapé do Template -->
+    <div id="footer" style="padding-left: 15px;">
+      {% block footer %}
+      <br>
+      &copy; Copyright 2016 by <a href="mailto:paulo.trevisolli@gmail.com">Paulo Trevisolli</a>.
+      {% endblock %}
+    </div>
+  </body>
+</html>
