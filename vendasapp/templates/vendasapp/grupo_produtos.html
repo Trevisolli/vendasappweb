@@ -1,7 +1,5 @@
 {% extends "template_site.html" %}
 
-{% block title %}GV - Gestão de Vendas - v: 001 {% endblock %}
-
 {% block content %}
 <body onload="iniciar();">
 
@@ -13,11 +11,13 @@
 
 	<hr>
 	<div id="divform">
+
 	  <form action="" method="POST" name="cadastrar">
+	  {% csrf_token %}
 	    <table>
 	      <tr>
 	        <td width="100" class="td1">Descrição</td>
-	        <td><input type="text" name="descricao" class="form-control" style="margin: 0px 0px 10px; width: 400px;" maxlength="100"></td>
+	        <td><input type="text" name="descricao" class="form-control" style="margin: 0px 0px 10px; width: 400px;  text-transform: uppercase" maxlength="100"></td>
 	      </tr>
 	      <tr>
 	        <td class="td1">Ativo</td>
@@ -58,7 +58,7 @@
 
 	    <hr>
 	    
-	    <!-- <input type="submit" value="Salvar"> -->
+	    <!--<input type="submit" value="Salvar">-->
 	    <a class="btn btn-success btn-outline" onclick="validar()">Salvar</a>
 	  </form>
 	</div>
@@ -70,6 +70,11 @@
   function iniciar(){
       document.cadastrar.descricao.focus();
     }
+
+  function validar(){  	
+  	document.getElementById("cadastrar").submit();
+  	iniciar();
+  }  
 
 </script>
 {% endblock %}

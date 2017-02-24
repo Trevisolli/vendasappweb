@@ -1,7 +1,13 @@
 from django.db import models
+from django import forms 
 
 # Create your models here.
 from django.utils import timezone
+
+OPCOES_ATIVO = (
+    ('S', 'Sim'),
+    ('N', 'Não'),    
+)
 
 class Identificacao(models.Model):
     # Classe abstrata: Dados em comum na Classe, porém, no BD as informações são geradas
@@ -17,7 +23,7 @@ class Identificacao(models.Model):
 class GrupoProduto(Identificacao):
 	descricao = models.CharField(max_length=100)
 	texto = models.TextField()
-	ativo = models.CharField(max_length=1, default="S")
+	ativo = models.CharField(max_length=1, choices=OPCOES_ATIVO, default="S")
 
 class Produto(Identificacao):
 	descricao = models.CharField(max_length=100) 
