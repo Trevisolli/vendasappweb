@@ -15,8 +15,8 @@ class Identificacao(models.Model):
 	class Meta:
 		abstract = True
 
-	usuario_inclusao = models.ForeignKey('auth.User', related_name='%(app_label)s_%(class)s_created_by')
-	data_inclusao = models.DateTimeField(default=timezone.now)
+	usuario_inclusao = models.ForeignKey('auth.User', related_name='%(app_label)s_%(class)s_created_by', blank=False)
+	data_inclusao = models.DateTimeField(default=timezone.now, blank=False)
 	usuario_alteracao = models.ForeignKey('auth.User', related_name='%(app_label)s_%(class)s_modified_by', null=True, blank=True)
 	data_alteracao = models.DateTimeField(null=True, blank=True)
 
@@ -37,4 +37,13 @@ class Produto(Identificacao):
 	valor_unitario = models.DecimalField(max_digits=15, decimal_places=2, verbose_name="Valor Unitário")
 
 	def __str__(self):	
-		return self.descricao	
+		return "{} by {}".format(self.descricao, self.listar_produto_all())	
+
+	def listar_produto_all(self):
+		return ", ".join([grupoproduto.descricao for grupoproduto in self.grupoproduto.all()])
+
+	def salvar(self, *args, **kwargs):
+		if (self.descricao is None):
+			self.descricao = "Sem Descrição"
+
+		super(Produto, self).save(*args, **kwargs)
