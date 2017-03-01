@@ -12,11 +12,11 @@
 	<hr>
 	<div id="divform">
 
-	  <form action="" method="POST" name="cadastrar">
-	  {% csrf_token %}
+	  <form action="" method="POST" name="cadastrar_grupo_produto" id="cadastrar_grupo_produto">
 	    <table>
 	      <tr>
 	        <td width="100" class="td1">Descrição</td>
+
 	        <td><input type="text" name="descricao" class="form-control" style="margin: 0px 0px 10px; width: 400px;  text-transform: uppercase" maxlength="100"></td>
 	      </tr>
 	      <tr>
@@ -68,12 +68,13 @@
 
   
   function iniciar(){
-      document.cadastrar.descricao.focus();
+      document.cadastrar_grupo_produto.descricao.focus();
     }
 
   function validar(){  	
-  	document.getElementById("cadastrar").submit();
-  	iniciar();
+    var form = document.getElementById("cadastrar_grupo_produto");
+    alert("Form: " + form.descricao.value)
+    form.submit();
   }  
 
 </script>
