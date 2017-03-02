@@ -1,22 +1,20 @@
 {% extends "template_site.html" %}
-
 {% block content %}
 <body onload="iniciar();">
 
 	<h1>
 	  <div id="cadastro">
-	  Manutenção de Grupo de Produtos
+	  Manutencao de Grupo de Produtos
 	  </div>
 	</h1>
 
 	<hr>
 	<div id="divform">
 
-	  <form action="" method="POST" name="cadastrar_grupo_produto" id="cadastrar_grupo_produto">
+	  <form action="" method="POST" name="cadastrar">
 	    <table>
 	      <tr>
-	        <td width="100" class="td1">Descrição</td>
-
+	        <td width="100" class="td1">Descricao</td>
 	        <td><input type="text" name="descricao" class="form-control" style="margin: 0px 0px 10px; width: 400px;  text-transform: uppercase" maxlength="100"></td>
 	      </tr>
 	      <tr>
@@ -26,12 +24,11 @@
 				  <!--<label for="sel1">Selecione: </label>-->
 				  <select class="form-control" id="ativo" style="width: 100px;"">
 				    <option value="S" selected >Sim</option>
-				    <option value="N">Não</option>
+				    <option value="N">Nao</option>
 				  </select>
 				</div>	        
 	        </td>
 	      </tr>    
-
 	      <tr>
 	        <td class="td1">Txt Adicional</td>
 	        <td>
@@ -39,43 +36,37 @@
 	        </td>
 	      </tr>
 	      <tr>
-	        <td class="td1">Usu.Inclusão</td>
+	        <td class="td1">Usu.Inclusao</td>
 	        <td><input type="text" name="url" style="margin: 0px 0px 10px; width: 300px;"  class="form-control" maxlength="100" disabled></td>
 	      </tr>    
 	      <tr>
-	        <td class="td1">Data Inclusão</td>
+	        <td class="td1">Data Inclusao</td>
 	        <td><input type="text" name="url" style="margin: 0px 0px 10px; width: 200px;"  class="form-control" maxlength="100" disabled></td>
 	      </tr>    
 	      <tr>
-	        <td class="td1">Usu.Alteração</td>
+	        <td class="td1">Usu.Alteracao</td>
 	        <td><input type="text" name="url" style="margin: 0px 0px 10px; width: 300px;"  class="form-control" maxlength="100" disabled></td>
 	      </tr>    
 	      <tr>
-	        <td class="td1">Data Alteração</td>
+	        <td class="td1">Data Alteracao</td>
 	        <td><input type="text" name="url" style="margin: 0px 0px 10px; width: 200px;"  class="form-control" maxlength="100" disabled></td>
 	      </tr>    
 	    </table>
-
 	    <hr>
 	    
 	    <!--<input type="submit" value="Salvar">-->
 	    <a class="btn btn-success btn-outline" onclick="validar()">Salvar</a>
 	  </form>
 	</div>
-
 </body>
 <script type="text/javascript">
-
   
   function iniciar(){
-      document.cadastrar_grupo_produto.descricao.focus();
+      document.cadastrar.descricao.focus();
     }
-
   function validar(){  	
-    var form = document.getElementById("cadastrar_grupo_produto");
-    alert("Form: " + form.descricao.value)
-    form.submit();
+  	document.getElementById("cadastrar").submit();
+  	iniciar();
   }  
-
 </script>
 {% endblock %}

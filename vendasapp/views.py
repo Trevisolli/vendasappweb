@@ -1,15 +1,21 @@
 #coding:utf-8
 from django.shortcuts import render, redirect
-from django.db import IntegrityError
-from .models import GrupoProduto
+from .models import Produto
 
 # Create your views here.
 def vendas_inicial(request):
     return render(request, 'vendasapp/vendas_inicial.html', {})
 
 # Produtos 
-def novo_grupo_produtos(request):
-    return render(request, 'vendasapp/novo_grupo_produtos.html', {})
+def criar_grupo_produtos(request):
+    return render(request, 'vendasapp/criar_grupo_produtos.html', {})
+
+def listar_produtos(request):
+    produtos = Produto.objects.all().filter(ativo__contains="S")
+    context = {
+        'produtos': produtos,
+    }
+    return render(request, 'vendasapp/listar_produtos.html', context)    
 
 def cadastro_produtos(request):
     return render(request, 'vendasapp/cadastro_produtos.html', {})

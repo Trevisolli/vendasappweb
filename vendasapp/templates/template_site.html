@@ -53,7 +53,7 @@
             <ul class="dropdown-menu">
               <!-- Somente administrador cadastra usuario/login -->
               <li class="dropdown-header">Produtos</li>
-              <li><a href=" {% url 'novo_grupo_produtos' %} ">Grupo de Produtos</a></li>
+              <li><a href=" {% url 'criar_grupo_produtos' %} ">Grupo de Produtos</a></li>
               <li><a href="...">Produtos</a></li>
               <li><a href="...">Estoques</a></li>
               <li role="separator" class="divider"></li>
@@ -73,7 +73,7 @@
 
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Relatórios<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="...">Produtos</a></li>
+              <li><a href=" {% url 'listar_produtos' %}">Produtos</a></li>
               <li><a href="...">Clientes e Fornecedores</a></li>
             </ul>
           </li>
@@ -89,10 +89,18 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li id="divpesquisa" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" ><strong>Olá [  ] </strong> <span class="caret"></span></a>
+          <li id="divpesquisa" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+
+          {% if request.user.is_authenticated %}
+            <strong>Olá [ {{ request.user.username|title }} ] </strong> 
+            <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#" onclick="sair();" style="cursor: pointer;"> Sair</a></li>
               </ul>
+          {% else %}
+            <strong>Olá [ visitante! ] </strong>   
+          {% endif %}
+
           </li>
         </ul>
       </div>

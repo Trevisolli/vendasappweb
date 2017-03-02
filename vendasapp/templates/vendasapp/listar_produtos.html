@@ -1,0 +1,49 @@
+{% extends "template_site.html" %}
+
+{% block title %}PSM - ProdSalesManagement {% endblock %}
+
+{% block content %}
+  <body>
+	<h1>
+	  <div id="cadastro">
+	  Listagem de Produtos
+	  </div>
+	</h1>
+    <main>
+ 
+
+			<div id="divtabela">
+
+			  <table class="table table-striped table-bordered table-hover table-condensed" id="tb1"> 
+			    <tr style="font-weight:bold;background-color: #4CAF50; text-align: center;">
+			      <td>Id.</td>
+			      <td>Descrição</td>
+			      <td>Grupo</td>
+			      <td>Valor</td>
+			      <td>Ativo</td>  
+			    </tr>
+
+			      {% for lista_produtos in produtos %}
+			        
+			          <tr align="center">      
+			              <td align="center">{{ lista_produtos.id }}</td>
+			              <td>{{ lista_produtos.descricao }}</td>        
+			              <td>{{ lista_produtos.id_grupo_produto }} 
+
+			              </td>
+
+			              <td align="center">{{ lista_produtos.valor_unitario }}</td>  
+			              <td align="center">{{ lista_produtos.ativo }}</td>  
+
+			          </tr>   
+
+			      {% endfor %}
+			  </table>
+			  <br>
+			  Total: {{ produtos.count }}  Produto{{ produtos.count|pluralize }}  ativo{{ produtos.count|pluralize }}
+			  </div>
+
+    </main>
+  </body>
+
+{% endblock %}
